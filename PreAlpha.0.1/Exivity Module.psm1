@@ -22,6 +22,7 @@ function Connect-Exivity {
     }
     Invoke-RestMethod -Uri $uri -Method Post -Headers $headers -Body $body
 }
+
 function Disconnect-Exivity {
     param (
         [string[]]$ComputerName,
