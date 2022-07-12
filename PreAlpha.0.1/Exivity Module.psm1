@@ -11,16 +11,16 @@ function Connect-Exivity {
         Disable-SSL
     }
 
-    $uri = "https://$ComputerName/v1/auth/token"
-    $headers = @{
+    $Uri = "https://$ComputerName/v1/auth/token"
+    $Headers = @{
         'Content-Type' = 'application/x-www-form-urlencoded'
         'Accept' = 'application/json'
     }
-    $body = @{
+    $Body = @{
         username = "$UserName"
         password = "$Key"
     }
-    Invoke-RestMethod -Uri $uri -Method Post -Headers $headers -Body $body
+    Invoke-RestMethod -Uri $Uri -Method Post -Headers $Headers -Body $Body
 }
 
 function Disconnect-Exivity {
@@ -28,11 +28,11 @@ function Disconnect-Exivity {
         [string[]]$ComputerName,
         [string[]]$Token
     )
-    $uri = "https://$ComputerName/v1/auth/token"
-    $headers = @{
-        Authorization="Bearer $token"
+    $Uri = "https://$ComputerName/v1/auth/token"
+    $Headers = @{
+        Authorization="Bearer $Token"
     }
-    Invoke-RestMethod -Uri $uri -Method Delete -Headers $headers
+    Invoke-RestMethod -Uri $Uri -Method Delete -Headers $Headers
 }
 
 # Supporting Functions
